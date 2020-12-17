@@ -14,7 +14,7 @@ export const fetchNewsList = createAsyncThunk(
     async () => {
         const newsList = await getNewsList();
 
-        return newsList.filter(news => news !== null && !news.error && !news.deleted);
+        return newsList.filter(news => news && !news.error && !news.deleted);
     }
 );
 

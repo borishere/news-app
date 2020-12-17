@@ -12,7 +12,7 @@ export const fetchComments = createAsyncThunk(
     async idsArr => {
         let comments = await getNewsComments(idsArr);
 
-        return comments.filter(comment => !comment.error && !comment.deleted);
+        return comments.filter(comment => comment && !comment.error && !comment.deleted);
     }
 );
 
