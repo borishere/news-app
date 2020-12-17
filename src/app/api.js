@@ -7,12 +7,10 @@ export const getItem = async id => {
 }
 
 export const getNewsList = async () => {
-    const response = await fetch(`${API_ROOT}/newstories.json`);
+    const response = await fetch(`${API_ROOT}/newstories.json?orderBy="$key"&limitToFirst=100`);
 
     if (response.ok) {
         let newsIds = await response.json();
-
-        newsIds = newsIds.slice(0, 100);
 
         return Promise.all(newsIds.map(async id => getItem(id)));
     }
