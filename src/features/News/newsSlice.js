@@ -20,7 +20,15 @@ export const fetchNewsList = createAsyncThunk(
 
 export const fetchNewsItem = createAsyncThunk(
     'news/fetchNewsItem',
-    async id => await getItem(id)
+    async id => {
+        const newsItem = await getItem(id);
+
+        if (newsItem) {
+            return newsItem;
+        }
+
+        throw new Error();
+    }
 );
 
 const newsSlice = createSlice({

@@ -13,7 +13,6 @@ const NewsItemPage = ({ match }) => {
 
     const newsId = match.params.id;
     const newsItem = useSelector(state => selectById(state, newsId));
-    const { title, url, by, time, descendants, kids = [] } = newsItem;
 
     const itemUpdate = () => {
         dispatch(fetchNewsItem(newsId));
@@ -28,6 +27,16 @@ const NewsItemPage = ({ match }) => {
             clearInterval(updateInterval);
         }
     }, [dispatch, newsId]);
+
+    if (!newsItem) {
+        return (
+            <h2 style={{ textAlign: 'center' }}>
+                News not found.
+            </h2>
+        )
+    }
+
+    const { title, url, by, time, descendants, kids = [] } = newsItem;
 
     return (
         <div>
