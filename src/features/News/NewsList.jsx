@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button, List } from 'semantic-ui-react';
-import AppLoader from '../../app/AppLoader';
-import { UPDATE_TIMEOUT } from '../../app/misc/constants';
+import AppLoader from '../../Components/AppLoader';
+import { UPDATE_TIMEOUT } from '../../app/Constants/constants';
 import { News } from './News';
 import { selectAll } from './newsSlice';
 import { fetchNewsList } from "./newsSlice";

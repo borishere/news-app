@@ -1,5 +1,5 @@
 import { createAsyncThunk, createEntityAdapter, createSlice } from '@reduxjs/toolkit';
-import { getNewsComments } from '../../app/api';
+import { getNewsComments } from '../../app/Api/api';
 
 const commentsAdapter = createEntityAdapter({
     sortComparer: (a, b) => b.time - a.time

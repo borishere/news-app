@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { Transition } from 'semantic-ui-react';
-import AppLoader from '../../app/AppLoader';
+import AppLoader from '../../Components/AppLoader';
 import CommentItem from './CommentItem';
 import { fetchComments, selectAllComments } from './CommentsSlice';
 

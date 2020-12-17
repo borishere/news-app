@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import parse from 'html-react-parser';
 import { Comment, Transition } from 'semantic-ui-react';
-import { NewsDate } from '../News/NewsDate';
+import { DateItem } from '../../Components/DateItem';
 import { fetchComments, selectAllComments } from './CommentsSlice';
-import AppLoader from '../../app/AppLoader';
+import AppLoader from '../../Components/AppLoader';
 
 const CommentItem = ({ comment }) => {
     const dispatch = useDispatch();
@@ -47,7 +47,7 @@ const CommentItem = ({ comment }) => {
                         {by}
                     </Comment.Author>
                     <Comment.Metadata>
-                        <NewsDate timestamp={time} />
+                        <DateItem timestamp={time} />
                     </Comment.Metadata>
                     <Comment.Text>
                         {parsedText}

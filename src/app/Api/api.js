@@ -1,4 +1,4 @@
-import { NEWS_COUNT } from "./misc/constants";
+import { NEWS_COUNT } from "../Constants/constants";
 
 const API_ROOT = 'https://hacker-news.firebaseio.com/v0';
 

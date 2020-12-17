@@ -2,10 +2,10 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { Button, Card, Icon } from 'semantic-ui-react';
-import { UPDATE_TIMEOUT } from '../../app/misc/constants';
 import CommentsList from '../Comments/CommentsList';
-import { NewsDate } from './NewsDate';
+import { DateItem } from '../../Components/DateItem';
 import { fetchNewsItem, selectById } from './newsSlice';
+import { UPDATE_TIMEOUT } from '../../app/Constants/constants';
 
 const NewsItemPage = ({ match }) => {
     const history = useHistory();
@@ -49,7 +49,7 @@ const NewsItemPage = ({ match }) => {
                 <Card.Content>
                     <Card.Header>{title}</Card.Header>
                     <Card.Meta>
-                        <NewsDate timestamp={time} />
+                        <DateItem timestamp={time} />
                     </Card.Meta>
                     <Card.Description>
                         <div className='card-url'>{url}</div>
