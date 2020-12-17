@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button, List } from 'semantic-ui-react';
 import AppLoader from '../../app/AppLoader';
+import { UPDATE_TIMEOUT } from '../../app/misc/constants';
 import { News } from './News';
 import { selectAll } from './newsSlice';
 import { fetchNewsList } from "./newsSlice";
@@ -29,7 +30,7 @@ const NewsList = () => {
     useEffect(() => {
         const updateInterval = setInterval(() => {
             dispatch(fetchNewsList());
-        }, 60000);
+        }, UPDATE_TIMEOUT);
 
         return () => {
             clearInterval(updateInterval);

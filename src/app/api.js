@@ -1,3 +1,5 @@
+import { NEWS_COUNT } from "./misc/constants";
+
 const API_ROOT = 'https://hacker-news.firebaseio.com/v0';
 
 export const getItem = async id => {
@@ -7,7 +9,7 @@ export const getItem = async id => {
 }
 
 export const getNewsList = async () => {
-    const response = await fetch(`${API_ROOT}/newstories.json?orderBy="$key"&limitToFirst=100`);
+    const response = await fetch(`${API_ROOT}/newstories.json?orderBy="$key"&limitToFirst=${NEWS_COUNT}`);
 
     if (response.ok) {
         let newsIds = await response.json();

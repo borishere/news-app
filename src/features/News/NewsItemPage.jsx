@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { Button, Card, Icon } from 'semantic-ui-react';
+import { UPDATE_TIMEOUT } from '../../app/misc/constants';
 import CommentsList from '../Comments/CommentsList';
 import { NewsDate } from './NewsDate';
 import { fetchNewsItem, selectById } from './newsSlice';
@@ -21,7 +22,7 @@ const NewsItemPage = ({ match }) => {
     useEffect(() => {
         const updateInterval = setInterval(() => {
             dispatch(fetchNewsItem(newsId));
-        }, 60000);
+        }, UPDATE_TIMEOUT);
 
         return () => {
             clearInterval(updateInterval);
