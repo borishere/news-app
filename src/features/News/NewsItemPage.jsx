@@ -52,7 +52,9 @@ const NewsItemPage = ({ match }) => {
                         <DateItem timestamp={time} />
                     </Card.Meta>
                     <Card.Description>
-                        <div className='card-url'>{url}</div>
+                        <div className="card-url-wrap">
+                            <a href={url} target='blank' className="card-url">{url}</a>
+                        </div>
                         <div>By {by}</div>
                     </Card.Description>
                 </Card.Content>

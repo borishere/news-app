@@ -35,8 +35,16 @@ body {
         }
         .description {
             color: hsla(0, 0%, 100%, 0.9);
-            .card-url {
-                margin-bottom: 10px;
+            .card-url-wrap {
+                margin-bottom: 30px;
+                overflow-wrap: break-word;
+                > .card-url {
+                    color: hsl(180, 100%, 50%);
+                    opacity: 0.7;
+                    &:hover {
+                        opacity: 1;
+                    }
+                }
             }
         }
         &.extra {
