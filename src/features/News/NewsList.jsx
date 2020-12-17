@@ -56,6 +56,12 @@ const NewsList = () => {
         }
     } else if (loadingStatus === 'succeeded') {
         content = newsListElement;
+    } else if (loadingStatus === 'failed') {
+        content = (
+            <div style={{ textAlign: 'center' }}>
+                Failed to load news!
+            </div>
+        );
     }
 
     return (

@@ -11,14 +11,17 @@ const initialState = newsAdapter.getInitialState({
 
 export const fetchNewsList = createAsyncThunk(
     'news/fetchNewsList',
-    async () => await getNewsList()
+    async () => {
+        const newsList = await getNewsList();
+
+        return newsList.filter(news => news !== null && !news.error && !news.deleted);
+    }
 );
 
 export const fetchNewsItem = createAsyncThunk(
     'news/fetchNewsItem',
     async id => await getItem(id)
 );
-
 
 const newsSlice = createSlice({
     name: 'news',
