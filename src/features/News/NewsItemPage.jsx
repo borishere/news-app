@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { Button, Card, Icon } from 'semantic-ui-react';
@@ -14,8 +14,14 @@ const NewsItemPage = ({ match }) => {
     const newsId = match.params.id;
     const newsItem = useSelector(state => selectById(state, newsId));
 
+    const [loading, setLoading] = useState(false);
+
     const itemUpdate = () => {
-        dispatch(fetchNewsItem(newsId));
+        setLoading(true);
+
+        dispatch(fetchNewsItem(newsId)).then(() => {
+            setLoading(false);
+        });
     };
 
     useEffect(() => {
@@ -45,6 +51,8 @@ const NewsItemPage = ({ match }) => {
                 icon='refresh'
                 content='Refresh Comments'
                 size='large'
+                loading={loading}
+                disabled={loading}
                 onClick={itemUpdate}
             />
             <Button

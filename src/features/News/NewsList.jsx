@@ -72,6 +72,8 @@ const NewsList = () => {
                 icon='refresh'
                 content='Refresh'
                 size='large'
+                loading={loadingStatus === 'loading'}
+                disabled={loadingStatus === 'loading'}
                 onClick={newsUpdate}
             />
             {content}
