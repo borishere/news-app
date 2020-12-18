@@ -8,7 +8,7 @@ import NewsItemPage from './features/News/NewsItemPage';
 
 const App = () => {
     return (
-        <BrowserRouter>
+        <BrowserRouter basename={process.env.PUBLIC_URL}>
             <Container>
                 <Switch>
                     <Route exact path='/' component={NewsList}></Route>
