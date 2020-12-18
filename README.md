@@ -10,10 +10,10 @@ React, Redux, React Router, Semantic UI.
 
 <br>
 
-#### Main page:
+### Main page:
 Auto update news once a minute.
 
-#### News item page:
+### News item page:
 Only root comments are loaded immediately.<br>
 Nested comments are loaded on root comment click.<br>
 Auto update comments once a minute.
