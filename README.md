@@ -1,20 +1,19 @@
-React news app based on [Hacker News API](https://github.com/HackerNews/API)
+# React news app based on [Hacker News API](https://github.com/HackerNews/API)
 
-<h3>To run the app:</h3>
-
+## To run the app:
 `npm i && npm start`
 
 <br>
-<h3>What's used:</h3>
 
+## What's used:
 React, Redux, React Router, Semantic UI.
 
 <br>
-<h4>Main page:</h4>
+
+### Main page:
 Auto update news once a minute.
 
-<br>
-<h4>News item page:</h4>
+### News item page:
 Only root comments are loaded immediately.<br>
 Nested comments are loaded on root comment click.<br>
 Auto update comments once a minute.
