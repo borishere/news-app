@@ -6,7 +6,10 @@
 <br>
 
 ### What's used:
-React, Redux, React Router, Semantic UI.
+* React
+* Redux
+* React Router
+* Semantic UI.
 
 <br>
 
