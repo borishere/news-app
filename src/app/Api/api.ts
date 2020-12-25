@@ -29,7 +29,7 @@ export const getItem = async (id: string): Promise<ItemType> => {
 }
 
 export const getNewsList = async (): Promise<ItemType[]> => {
-    const response = await fetch(`${API_ROOT}/beststories.json?orderBy="$key"&limitToFirst=${NEWS_COUNT}`);
+    const response = await fetch(`${API_ROOT}/newstories.json?orderBy="$key"&limitToFirst=${NEWS_COUNT}`);
 
     let newsIds: string[] = await response.json();
 
