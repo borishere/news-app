@@ -4,14 +4,22 @@ import { useHistory } from 'react-router-dom';
 import { Icon, List } from 'semantic-ui-react'
 import { selectById } from './newsSlice';
 import { DateItem } from '../../Components/DateItem';
+import { RootState } from '../../app/store';
 
-export const News = ({ id }) => {
+type NewsProps = {
+    id: number
+};
+
+export const News: React.FC<NewsProps> = ({ id }) => {
     const history = useHistory();
+    const newsItem = useSelector((state: RootState) => selectById(state, id));
 
-    const newsItem = useSelector(state => selectById(state, id));
-    const { title, time, by, score } = newsItem;
+    const title = newsItem?.title
+    const time = newsItem?.time
+    const by = newsItem?.by
+    const score = newsItem?.score
 
-    const openNewsDetails = () => {
+    const openNewsDetails: React.MouseEventHandler = (): void => {
         history.push(`/news/${id}`);
     };
 

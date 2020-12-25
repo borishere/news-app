@@ -1,18 +1,25 @@
 import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { RouteComponentProps, useHistory } from 'react-router-dom';
 import { Button, Card, Icon } from 'semantic-ui-react';
 import CommentsList from '../Comments/CommentsList';
 import { DateItem } from '../../Components/DateItem';
 import { fetchNewsItem, selectById } from './newsSlice';
 import { UPDATE_TIMEOUT } from '../../app/Constants/constants';
+import { RootState, useAppDispatch } from '../../app/store';
 
-const NewsItemPage = ({ match }) => {
+interface RouterProps {
+    id: string;
+}
+
+interface NewsItemPageProps extends RouteComponentProps<RouterProps> { }
+
+const NewsItemPage: React.FC<NewsItemPageProps> = ({ match }) => {
     const history = useHistory();
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
     const newsId = match.params.id;
-    const newsItem = useSelector(state => selectById(state, newsId));
+    const newsItem = useSelector((state: RootState) => selectById(state, newsId));
 
     const [loading, setLoading] = useState(false);
 

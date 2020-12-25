@@ -1,23 +1,24 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { ReactNode, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { Button, List } from 'semantic-ui-react';
 import AppLoader from '../../Components/AppLoader';
 import { UPDATE_TIMEOUT } from '../../app/Constants/constants';
 import { News } from './News';
 import { selectAll } from './newsSlice';
 import { fetchNewsList } from "./newsSlice";
+import { RootState, useAppDispatch } from '../../app/store';
 
-const NewsList = () => {
-    const dispatch = useDispatch();
+const NewsList: React.FC = () => {
+    const dispatch = useAppDispatch();
 
-    const loadingStatus = useSelector(state => state.newsList.loading);
+    const loadingStatus = useSelector((state: RootState) => state.newsList.loading);
     const newsList = useSelector(selectAll);
 
     const newsListContent = newsList.map(news => (
         <News key={news.id} id={news.id} />
     ));
 
-    const newsUpdate = () => {
+    const newsUpdate = (): void => {
         dispatch(fetchNewsList());
     };
 
@@ -37,8 +38,8 @@ const NewsList = () => {
         }
     }, [dispatch]);
 
-    let content;
-    let newsListElement =
+    let content: ReactNode;
+    let newsListElement: ReactNode =
         <div>
             <List
                 divided

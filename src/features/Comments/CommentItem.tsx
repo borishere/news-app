@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { MouseEventHandler, useState } from 'react';
+import { useSelector } from 'react-redux';
 import parse from 'html-react-parser';
 import { Comment, Transition } from 'semantic-ui-react';
 import { DateItem } from '../../Components/DateItem';
 import { fetchComments, selectAllComments } from './CommentsSlice';
 import AppLoader from '../../Components/AppLoader';
+import { useAppDispatch } from '../../app/store';
+import { CommentType } from './CommentsSlice';
 
-const CommentItem = ({ comment }) => {
-    const dispatch = useDispatch();
+const CommentItem: React.FC<{ comment: CommentType }> = ({ comment }) => {
+    const dispatch = useAppDispatch();
     const [loading, setLoading] = useState(false);
 
     const { id, by, time, text, kids = [] } = comment;
@@ -27,11 +29,11 @@ const CommentItem = ({ comment }) => {
         classes.push('is-parent-comment');
     }
 
-    const commentClick = () => {
+    const commentClick: MouseEventHandler = (): void => {
         if (kids.length) {
             setLoading(true);
 
-            const request = dispatch(fetchComments(kids));
+            const request: any = dispatch(fetchComments(kids));
 
             request.then(() => {
                 setLoading(false);

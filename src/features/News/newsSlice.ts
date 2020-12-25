@@ -1,9 +1,10 @@
 import { createAsyncThunk, createEntityAdapter, createSlice } from '@reduxjs/toolkit';
-import { getItem, getNewsList } from '../../app/Api/api';
+import { getItem, getNewsList, ItemType } from '../../app/Api/api';
+import { RootState } from '../../app/store';
 
-const newsAdapter = createEntityAdapter({
-    sortComparer: (a, b) => b.time - a.time
-})
+const newsAdapter = createEntityAdapter<ItemType>({
+    sortComparer: (a, b) => +b.time - +a.time
+});
 
 const initialState = newsAdapter.getInitialState({
     loading: 'idle'
@@ -20,7 +21,7 @@ export const fetchNewsList = createAsyncThunk(
 
 export const fetchNewsItem = createAsyncThunk(
     'news/fetchNewsItem',
-    async id => {
+    async (id: string) => {
         const newsItem = await getItem(id);
 
         if (newsItem) {
@@ -34,28 +35,28 @@ export const fetchNewsItem = createAsyncThunk(
 const newsSlice = createSlice({
     name: 'news',
     initialState,
-    reducers: {
-
-    },
-    extraReducers: {
-        [fetchNewsList.pending]: state => {
+    reducers: {},
+    extraReducers: builder => {
+        builder.addCase(fetchNewsList.pending, state => {
             state.loading = 'loading';
-        },
+        });
 
-        [fetchNewsList.fulfilled]: (state, action) => {
+        builder.addCase(fetchNewsList.fulfilled, (state, action) => {
             state.loading = 'succeeded';
 
             newsAdapter.upsertMany(state, action.payload);
-        },
+        });
 
-        [fetchNewsList.rejected]: state => {
+        builder.addCase(fetchNewsList.rejected, (state, action) => {
             state.loading = 'failed';
-        },
+        });
 
-        [fetchNewsItem.fulfilled]: newsAdapter.upsertOne
+        builder.addCase(fetchNewsItem.fulfilled, (state, action) => {
+            // newsAdapter.upsertOne
+        });
     }
 });
 
-export const { selectAll, selectById } = newsAdapter.getSelectors(state => state.newsList);
+export const { selectAll, selectById } = newsAdapter.getSelectors<RootState>(state => state.newsList);
 
 export default newsSlice.reducer;
