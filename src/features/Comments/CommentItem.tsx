@@ -33,7 +33,7 @@ const CommentItem: React.FC<{ comment: CommentType }> = ({ comment }) => {
         if (kids.length) {
             setLoading(true);
 
-            const request: any = dispatch(fetchComments(kids));
+            const request = dispatch(fetchComments(kids));
 
             request.then(() => {
                 setLoading(false);
