@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 export const DateItem: React.FC<{ timestamp: number | undefined }> = ({ timestamp }) => {
     let date;
     let localizedDate;

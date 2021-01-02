@@ -23,7 +23,7 @@ const NewsItemPage: React.FC<NewsItemPageProps> = ({ match }) => {
 
     const [loading, setLoading] = useState(false);
 
-    const itemUpdate = () => {
+    const itemUpdate = (): void => {
         setLoading(true);
 
         dispatch(fetchNewsItem(newsId)).then(() => {
