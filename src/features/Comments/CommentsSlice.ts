@@ -1,10 +1,7 @@
 import { createAsyncThunk, createEntityAdapter, createSlice } from '@reduxjs/toolkit';
-import { getNewsComments, ItemType } from '../../app/Api/api';
+import { getNewsComments} from '../../app/Api/api';
 import { RootState } from '../../app/store';
-
-export type CommentType = ItemType & {
-    text: string
-};
+import { CommentType } from '../../app/Types/types';
 
 const commentsAdapter = createEntityAdapter<CommentType>({
     sortComparer: (a, b) => b.time - a.time

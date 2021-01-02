@@ -1,25 +1,7 @@
 import { NEWS_COUNT } from "../Constants/constants";
+import { ItemType } from "../Types/types";
 
 const API_ROOT = 'https://hacker-news.firebaseio.com/v0';
-
-export type ItemType = {
-    id: number
-    deleted?: boolean
-    type: 'job' | 'story' | 'comment' | 'poll' | 'pollopt'
-    by: string
-    time: number
-    text: string
-    dead?: boolean
-    parent: number
-    poll?: number
-    kids: string[]
-    url: string
-    score: number
-    title: string
-    parts?: number[]
-    descendants: number,
-    error?: any
-};
 
 export const getItem = async (id: string): Promise<ItemType> => {
     const response = await fetch(`${API_ROOT}/item/${id}.json`);

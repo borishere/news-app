@@ -1,6 +1,7 @@
 import { createAsyncThunk, createEntityAdapter, createSlice } from '@reduxjs/toolkit';
-import { getItem, getNewsList, ItemType } from '../../app/Api/api';
+import { getItem, getNewsList } from '../../app/Api/api';
 import { RootState } from '../../app/store';
+import { ItemType } from '../../app/Types/types';
 
 const newsAdapter = createEntityAdapter<ItemType>({
     sortComparer: (a, b) => +b.time - +a.time

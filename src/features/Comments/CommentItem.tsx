@@ -6,7 +6,7 @@ import { DateItem } from '../../Components/DateItem';
 import { fetchComments, selectAllComments } from './CommentsSlice';
 import AppLoader from '../../Components/AppLoader';
 import { useAppDispatch } from '../../app/store';
-import { CommentType } from './CommentsSlice';
+import { CommentType } from '../../app/Types/types';
 
 const CommentItem: React.FC<{ comment: CommentType }> = ({ comment }) => {
     const dispatch = useAppDispatch();
