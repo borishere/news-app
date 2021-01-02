@@ -9,6 +9,7 @@
 * React
 * Redux
 * React Router
+* Typescript
 * Semantic UI.
 
 <br>
