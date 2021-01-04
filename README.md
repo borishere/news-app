@@ -8,8 +8,9 @@
 ### What's used:
 * React
 * Redux
-* React Router
 * Typescript
+* React Router
+* React Testing Library
 * Semantic UI.
 
 <br>
