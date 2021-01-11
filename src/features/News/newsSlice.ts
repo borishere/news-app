@@ -53,7 +53,7 @@ const newsSlice = createSlice({
         });
 
         builder.addCase(fetchNewsItem.fulfilled, (state, action) => {
-            // newsAdapter.upsertOne
+            newsAdapter.upsertOne(state, action.payload);
         });
     }
 });
